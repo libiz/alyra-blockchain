@@ -6,7 +6,6 @@ function hachage( chaine) {
     return condensat 
   }
   
-  
   function minage (chaine, target) {
     console.log("Mining. Target is", target)
     nonce=0
