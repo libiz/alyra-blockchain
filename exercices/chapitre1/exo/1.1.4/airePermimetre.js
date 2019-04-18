@@ -19,9 +19,5 @@ class Cercle{
 
 }
 
-let rayon = process.argv[2];
-let c = new Cercle(rayon);
-let a = c.aire();
-let p = c.perimetre();
-
-console.log("aire = ", a, " périmetre = ", p )
+let c = new Cercle(5);
+console.log({aire: c.aire(), perimetre: c.perimetre()});
