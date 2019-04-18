@@ -15,6 +15,6 @@ do
         alert("c'est plus");
     }
 }
-while(entree != solution)
+while(entree != solution) 
 
 console.log("Féliciation tu as trouvé le chiffre ", solution) 
