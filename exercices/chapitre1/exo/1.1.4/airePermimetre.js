@@ -6,7 +6,7 @@ class Cercle{
          this.rayon = rayon;
     }
 
-    aire(){
+    aire(){ 
 
         let aire = (this.rayon * this.rayon) * Math.PI;
         return aire; 
