@@ -9,6 +9,6 @@ function factorielle(nbr){
     }
 
 }
-
+ 
 let nbr = process.argv[2];
 console.log(factorielle(nbr)) 
