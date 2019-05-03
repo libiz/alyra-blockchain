@@ -85,24 +85,17 @@ app.get('/index/index2', function(req, res) {
     });
 });
 
-app.get('/index/bloc', function(req, res) {
+app.get('/index/bloc', async function(req, res) {
     console.log("index bloc",req.query, req.query["id"])
     let id=Number(req.query["id"])
+    console.log("id ===>",id)
+    // let id = req.query["id"]
     var bclient= new bitcoinClient.BitcoinClient()
-    bclient.getBlocByHeight(id).then(function(data){
-        //console.log("------------------------DATA-------------------------------",data)
-        //Request on TX of the block
-        let allTX=[]
-        let txList=data.tx
-        console.log(txList)
-        txList.forEach(function(tx){
-            bclient.getTransaction(tx).then(function(txReceived){
-                allTX.push(txReceived)
-            })
-        console.log("allTX received",allTX)
-        })
+    let blocjson = await bclient.getBlocByHeight(id)
+    let txjsonList = await bclient.getTransactionsByBlockHeight(id)
+    console.log("blocjson ===>",blocjson)
+    console.log("****************** txjsonList *******",txjsonList)
+    // res.send([blocjson,txjsonList])
+    res.render('bloc',[blocjson,txjsonList])
 
-        //var blockdetails=JSON.stringify(data)
-        res.render('bloc')
-    })
 });
