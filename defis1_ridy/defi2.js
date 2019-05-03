@@ -109,11 +109,13 @@ app.get('/index/bloc', async function(req, res) {
     var bclient= new bitcoinClient.BitcoinClient()
     let blocjson = await bclient.getBlocByHeight(id)
     let txjsonList = await bclient.getTransactionsByBlockHeight(id)
-    let json = JSON.stringify({
-        hashBloc: blocjson['hash']
-    });
 
-    res.send(json);
-    // res.render('bloc',json)
+    let json = {
+        hashBloc: blocjson['hash'],
+        txjsonList: txjsonList
+    };
+
+    // res.send(json);
+    res.render('bloc',json)
 
 });

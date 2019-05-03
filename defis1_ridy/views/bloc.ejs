@@ -34,74 +34,35 @@
 
   <div style="background-color: #FFD700; height: 50;padding: 20px;">
       <h2 style="text-align: center; color:black;line-height: 50px;">Bloc N°574 275</h2>
+      <p style="text-align: center; color:black;line-height: 50px;"><b style="font-size: 20px;">Hash : </b><span ><%= hashBloc %></span></p>
   </div>
   
 
 
-    <br/> <br/>
+    <br/> <br/> 
 
     <div class="container">
 
-        <div class="card" style="border:2px dotted #FFD700;background-color: black;padding: 20px;margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title" align="center">Hash transaction :<span id="hash"></span></h5>
-              <p>V IN.</p>
-              <ul>
-                <li>"txid": "2258e6c91bbe71760a246f883fff39798dd1ab9ebdb3cdfc0f8431aa674277ec"</li>
-                <li>"vout": 0,</li>
-                <li>"sequence": 4294967295</li>
-              </ul>
 
-
-              <p>V OUT.</p>
-              <ul>
-                <li>"value": 0.99900000,</li>
-                <li> "n": 0,</li>
-                <li>addresses":"bcrt1qpwzand6l2kke6sh29t56y32k3j35jvhkrn9s5l"</li>
-              </ul>
-            </div>
-        </div>
+        <% txjsonList.forEach(function(tx) { %>
 
         <div class="card" style="border:2px dotted #FFD700;background-color: black;padding: 20px;margin-bottom: 30px;">
             <div class="card-body">
-              <h5 class="card-title" align="center">Hash transaction : 9573174adcbd3b760604258ac634f1ce5b408764895f76dcf631bcd2c0ceff15</h5>
-              <p>V IN.</p>
-              <ul>
-                <li>"txid": "2258e6c91bbe71760a246f883fff39798dd1ab9ebdb3cdfc0f8431aa674277ec"</li>
-                <li>"vout": 0,</li>
-                <li>"sequence": 4294967295</li>
-              </ul>
-
-
-              <p>V OUT.</p>
-              <ul>
-                <li>"value": 0.99900000,</li>
-                <li> "n": 0,</li>
-                <li>addresses":"bcrt1qpwzand6l2kke6sh29t56y32k3j35jvhkrn9s5l"</li>
-              </ul>
+          
+                <% let a=JSON.stringify(tx.details) %>
+                <% let b=a.substr(1,a.length-2) %>
+                <% let c=JSON.parse(b) %>
+                <h5 align="center"><span style="color: #FFD700">Raw transaction </span> : <%= tx.hex %></h5>
+                <h5 align="center"><span style="color: #FFD700">Transaction adresse </span> : <%= c.address %></h5>
+                <h5 align="center"><span style="color: #FFD700">Montant </span> : <%= c.amount %> BTC</h5>
+  
             </div>
         </div>
+        
 
+        <% }); %>
+      
 
-        <div class="card" style="border:2px dotted #FFD700;background-color: black;padding: 20px;margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title" align="center">Hash transaction : 9573174adcbd3b760604258ac634f1ce5b408764895f76dcf631bcd2c0ceff15</h5>
-              <p>V IN.</p>
-              <ul>
-                <li>"txid": "2258e6c91bbe71760a246f883fff39798dd1ab9ebdb3cdfc0f8431aa674277ec"</li>
-                <li>"vout": 0,</li>
-                <li>"sequence": 4294967295</li>
-              </ul>
-
-
-              <p>V OUT.</p>
-              <ul>
-                <li>"value": 0.99900000,</li>
-                <li> "n": 0,</li>
-                <li>addresses":"bcrt1qpwzand6l2kke6sh29t56y32k3j35jvhkrn9s5l"</li>
-              </ul>
-            </div>
-        </div>
 
         <p><a href="/"><button type="button" class="btn btn-warning">Retour</button></a></p>
 
