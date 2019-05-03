@@ -112,7 +112,8 @@ app.get('/index/bloc', async function(req, res) {
 
     let json = {
         hashBloc: blocjson['hash'],
-        txjsonList: txjsonList
+        txjsonList: txjsonList,
+        id: id
     };
 
     // res.send(json);
