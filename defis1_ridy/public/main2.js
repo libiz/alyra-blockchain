@@ -84,6 +84,8 @@ var transactionsView=backbone.View.extend({
                        ),*/
     templateHeader:_.template("<tr><td><%= hash %></td></td>"                          
                        ),
+
+
     
     initialize:function(){
         var self=this
@@ -124,6 +126,9 @@ console.log("view blocks",viewBlocks)
         let input =  document.getElementById("hexReader").value;
         let q={"hex":input}
         console.log(input)
+        // $('#transactionContainer').innerHTML= ''
+        let templateHash = _.template("<p style='border:1px solid #FFD700; padding:20px;'>Décode Héxadécimal -> Hash <%= txid %><br/>locktime : <%= locktime %></p>")
+        
         $.ajax({
             url:"/decodeRawTransaction",
             type:'GET',
@@ -132,10 +137,11 @@ console.log("view blocks",viewBlocks)
             console.log("done decode",result)
             var reader=JSON.parse(result)
             let txid = reader['txid'];
-
+            let locktime = reader['locktime'];
             $('#txid').html(txid);
+            $('#txid2').append(templateHash({txid:txid,locktime:locktime}));
             // console.log(reader)
-            console.log("ridy=====>",txid)
+           
         })
         
     });
