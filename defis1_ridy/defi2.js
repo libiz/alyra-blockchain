@@ -85,6 +85,22 @@ app.get('/index/index2', function(req, res) {
     });
 });
 
+// app.get('/index/bloc', async function(req, res) {
+//     console.log("index bloc",req.query, req.query["id"])
+//     let id=Number(req.query["id"])
+//     console.log("id ===>",id)
+//     // let id = req.query["id"]
+//     var bclient= new bitcoinClient.BitcoinClient()
+//     let blocjson = await bclient.getBlocByHeight(id)
+//     let txjsonList = await bclient.getTransactionsByBlockHeight(id)
+//     console.log("blocjson ===>",blocjson)
+//     console.log("****************** txjsonList *******",txjsonList)
+   
+//     res.render('bloc',[blocjson,txjsonList])
+
+// });
+
+
 app.get('/index/bloc', async function(req, res) {
     console.log("index bloc",req.query, req.query["id"])
     let id=Number(req.query["id"])
@@ -93,9 +109,11 @@ app.get('/index/bloc', async function(req, res) {
     var bclient= new bitcoinClient.BitcoinClient()
     let blocjson = await bclient.getBlocByHeight(id)
     let txjsonList = await bclient.getTransactionsByBlockHeight(id)
-    console.log("blocjson ===>",blocjson)
-    console.log("****************** txjsonList *******",txjsonList)
-    // res.send([blocjson,txjsonList])
-    res.render('bloc',[blocjson,txjsonList])
+    let json = JSON.stringify({
+        hashBloc: blocjson['hash']
+    });
+
+    res.send(json);
+    // res.render('bloc',json)
 
 });
